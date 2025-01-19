@@ -1,0 +1,14 @@
+<h1>投稿一覧画面</h1>
+<%= link_to '新規投稿', new_post_path %>
+<table>
+  <tr>
+    <th>名言</th>
+    <th>著者</th>
+  </tr>
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.content %></td>
+      <td><%= post.author %></td>
+    </tr>
+  <% end %>
+</table>

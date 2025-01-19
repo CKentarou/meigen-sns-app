@@ -1,0 +1,14 @@
+<h1>投稿画面</h1>
+<%= form_with model: @post, local: true do |form| %>
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+  <div class="field">
+    <%= form.label :author %>
+    <%= form.text_field :author %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
