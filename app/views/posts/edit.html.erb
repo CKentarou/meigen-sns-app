@@ -1,5 +1,4 @@
-<h1 class="text-center my-4">新しい名言</h1>
-
+<h1>編集画面</h1>
 <%= form_with model: @post, local: true do |form| %>
   <div class="container">
     <div class="row justify-content-center">
@@ -16,14 +15,9 @@
           <%= form.text_field :author, class: "form-control", value: @post.author || current_user.name %>
         </div>
 
-        <!-- 検索ボタン -->
-        <div class="mb-3 text-center">
-          <%= link_to 'Search', posts_search_path, method: :get, class: 'btn btn-outline-primary' %>
-        </div>
-
         <!-- 投稿ボタン -->
         <div class="mb-3 text-center">
-          <%= form.submit '投稿', class: 'btn btn-primary' %>
+          <%= form.submit '更新', class: 'btn btn-primary' %>
         </div>
       </div>
     </div>

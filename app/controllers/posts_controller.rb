@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
   end
 
   def create
@@ -21,12 +22,31 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
+    if @post.user_id != current_user.id
+      redirect_to posts_path(@post)
+    end
   end
 
   def update
+    @post = Post.find(params[:id])
+    if @post.user_id == current_user.id
+      if @post.update(post_params)
+        redirect_to posts_path(@post)
+      else
+        render :edit
+      end
+    else
+      redirect_to posts_path(@post)
+    end
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    if @post.user_id == current_user.id
+      @post.destroy
+    end
+    redirect_to posts_path
   end
 
   def search

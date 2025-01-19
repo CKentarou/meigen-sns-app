@@ -1,2 +1,20 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<h1></h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="mb-3">
+        <p><%= @post.content %></p>
+      </div>
+      <div class="mb-3">
+        <p><%= @post.author %></p>
+      </div>
+      <div class="mb-3 text-center">
+        <%= link_to 'Back', posts_path, class: 'btn btn-outline-primary' %>
+        <% if current_user.id == @post.user_id %>
+          <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-outline-primary' %>
+          <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
