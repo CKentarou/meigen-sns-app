@@ -29,6 +29,17 @@ class PostsController < ApplicationController
   def destroy
   end
 
+  def search
+    uri = URI.parse("https://meigen.doodlenote.net/api/json.php")
+    json = Net::HTTP.get(uri)
+    result = JSON.parse(json)
+    @post = Post.new(
+      content: result.first["meigen"],
+      author: result.first["auther"] # キー名に合わせて修正
+    )
+    render :new
+  end
+
   private
 
   def post_params

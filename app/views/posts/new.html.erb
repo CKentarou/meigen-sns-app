@@ -2,12 +2,17 @@
 <%= form_with model: @post, local: true do |form| %>
   <div class="field">
     <%= form.label :content %>
-    <%= form.text_area :content, placeholder: "ここに投稿内容を入力してください" %>
+    <%= form.text_area :content, placeholder: "ここに投稿内容を入力してください", value: @post.content || "" %>
   </div>
   <div class="field">
     <%= form.label :author %>
-    <%= form.text_field :author, placeholder: current_user.name %>
+    <%= form.text_field :author, placeholder: current_user.name, value: @post.author || "" %>
   </div>
+
+  <div class="actions">
+    <%= link_to 'Search', posts_search_path, method: :get %>
+  </div>
+  
   <div class="actions">
     <%= form.submit %>
   </div>
