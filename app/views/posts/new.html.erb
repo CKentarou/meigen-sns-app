@@ -2,11 +2,11 @@
 <%= form_with model: @post, local: true do |form| %>
   <div class="field">
     <%= form.label :content %>
-    <%= form.text_area :content %>
+    <%= form.text_area :content, placeholder: "ここに投稿内容を入力してください" %>
   </div>
   <div class="field">
     <%= form.label :author %>
-    <%= form.text_field :author %>
+    <%= form.text_field :author, placeholder: current_user.name %>
   </div>
   <div class="actions">
     <%= form.submit %>
