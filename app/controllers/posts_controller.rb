@@ -4,14 +4,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    if params[:id]
-      # 現在のIDより大きい最初の投稿を取得
-      @random_post = Post.where('id > ?', params[:id]).first
-      # 次の投稿がない場合は最初の投稿を表示
-      @random_post ||= Post.first
-    else
-      @random_post = Post.first
-    end
+    @random_post = Post.order('RANDOM()').first
   end
 
   def show
