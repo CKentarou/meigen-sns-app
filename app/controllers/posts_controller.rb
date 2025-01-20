@@ -56,7 +56,7 @@ class PostsController < ApplicationController
     result = JSON.parse(json)
     @post = Post.new(
       content: result.first["meigen"],
-      author: result.first["auther"] # キー名に合わせて修正
+      author: result.first["auther"] 
     )
     render :new
   end
