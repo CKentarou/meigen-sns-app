@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    #投稿された内容のうちランダムなものを一つ取得
+    @random_post = Post.order("RANDOM()").first
   end
 
   def show
