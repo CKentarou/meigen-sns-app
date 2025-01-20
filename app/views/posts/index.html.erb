@@ -4,6 +4,9 @@
 
 <div class="container">
   <div class="row">
-    <%= @random_post.content %>
+    <%= @random_post.content %> 
     <%= @random_post.author %>
+  </div>
+  <div class="row">
+    <%= link_to '次へ', posts_path(id: @random_post.id), class: 'btn btn-primary' %>
 </div>

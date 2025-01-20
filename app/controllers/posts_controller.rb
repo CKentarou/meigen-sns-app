@@ -5,7 +5,10 @@ class PostsController < ApplicationController
 
   def index
     #投稿された内容のうちランダムなものを一つ取得
-    @random_post = Post.order("RANDOM()").first
+    @random_post = Post.first
+    if params[:id]
+      @random_post = Post.where('id > ?', params[:id]).first
+    end
   end
 
   def show
