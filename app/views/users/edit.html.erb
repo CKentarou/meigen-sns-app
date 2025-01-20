@@ -1,2 +1,14 @@
 <h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<%= form_with model: @user, local: true do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :profile_image %>
+    <%= f.file_field :profile_image %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
