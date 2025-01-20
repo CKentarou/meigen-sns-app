@@ -1,6 +1,29 @@
-<h1>TOPページです</h1>
-
-<div class="d-flex justify-content-center mt-4">
-  <a href="<%= new_user_session_path %>" class="btn btn-primary mx-2">ログイン</a>
-  <a href="<%= new_user_registration_path %>" class="btn btn-secondary mx-2">サインアップ</a>
-</div>
+<% if user_signed_in? %>
+  <h1>ログイン中</h1>
+<% else %>
+  <div class="container mt-5 pt-5 top-container">
+    <div class="row my-3">
+      <div class="col-md-12">
+        <h1 class="text-center" style="font-weight: bold; font-size: 3.5em">名言SNS</h1>
+      </div>
+    </div>
+    <div class="row my-3">
+      <div class="col-md-12">
+        <p class="text-center" style="line-height: 2.5; font-size: 1.2em;">
+            <strong style="font-size: 1.6em;">MEIGEN</strong>は、心に響く名言や、人生を彩る言葉を共有できる場です。<br>
+            あなたの気づきや感動を世界中の人々と分かち合い、新たな発見とインスピレーションを手に入れましょう。<br>
+            たった一つの言葉が、誰かの未来を変えるきっかけになるかもしれません。<br>
+            今すぐ始めて、新しいつながりと可能性を広げてみませんか？
+          </p>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-3 mb-3">
+        <%= link_to "Log In", new_user_session_path, class: "btn btn-primary btn-lg btn-block" %>
+      </div>
+      <div class="col-md-3 mb-3">
+        <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-outline-primary btn-lg btn-block" %>
+      </div>
+    </div>
+  </div>
+<% end %>
