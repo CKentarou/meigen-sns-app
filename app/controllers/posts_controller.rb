@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   end
 
   def index
-    @random_post = Post.order('RANDOM()').first
+    @user = current_user
+    @posts = Post.all.order("RANDOM()").limit(8)
   end
 
   def show

@@ -13,4 +13,55 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+  background-color: #f3f1ee !important;
+ }
+
+ header {
+  background-color: #f3f1ee
+ }
+
+ .head-icon {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border: 4px solid #f3f1ee; /* ボーダーの色 */
+  box-shadow: 
+    inset 4px 4px 8px rgba(0, 0, 0, 0.35), /* 内側の影 */
+    4px 4px 10px rgba(0, 0, 0, 0.6); /* 外側の影 */
+}
+
+
+ .head-btn {
+  width: 200px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.415);
+ }
+
+ .card:nth-child(4n){
+  margin-right: 0;
+ }
+
+ .post-card {
+  width: 21%;
+  height: 340px;
+  margin-right: 2.5%;
+  border-radius: 20px !important;
+  box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.415);
+ }
+
+ .card {
+  height: 100%;
+  border-radius: 20px !important;
+  background: linear-gradient(to bottom, #f3f1ee, #cdcccb) !important;
+ }
+
+ .card-3n {
+  background: linear-gradient(to bottom, #fff1dac1, #faf5ec) !important;
+ }
+
+ .card-2n {
+  background: linear-gradient(to bottom, #2e4345, #4a6c6b) !important;
+ }
+
  
