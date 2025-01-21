@@ -9,7 +9,7 @@
         <p><%= @post.author %></p>
       </div>
       <div class="mb-3 text-center">
-        <%= link_to 'Back', posts_path, class: 'btn btn-outline-primary' %>
+        <%= link_to 'Back', '#', class: 'btn btn-outline-primary', onclick: 'window.history.back(); return false;' %>
         <% if current_user.id == @post.user_id %>
           <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-outline-primary' %>
           <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %>
