@@ -33,9 +33,29 @@
       </div>
       <div class="col-10 d-flex flex-wrap px-5">
         <% @posts.each do |post| %>
-          <%= link_to post_path(post), class: "post-card  mb-3" do %>
-            <div class="card <%= 'card-3n' if post.id % 3 == 0 %> <%= 'card-2n' if post.id % 3 == 1 %>">
-              <p><%= post.id %></p>
+          <%= link_to post_path(post), class: "post-card  mb-3 text-decoration-none" do %>
+            <div class="card">
+              <div class="container-fluid p-3">
+                <div class="row">
+                  <div class="col-2">
+                    <%= image_tag post.user.get_profile_image(50, 50), class: "rounded-circle card-icon" %>
+                  </div>
+                  <div class="col-10">
+                    <%= post.user.name %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <p class="text-center"><%= post.content %></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <p class="text-center text-muted small"><%= post.author %></p>
+                    <p class="text-center text-muted small"><%= post.created_at.strftime("%Y-%m-%d") %></p>
+                  </div>
+                </div>
+              </div>
             </div>
           <% end %>
         <% end %>

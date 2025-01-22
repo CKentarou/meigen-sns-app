@@ -32,6 +32,14 @@
     4px 4px 10px rgba(0, 0, 0, 0.6); /* 外側の影 */
 }
 
+.card-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  box-shadow: 
+    inset 4px 4px 8px rgba(0, 0, 0, 0.35), /* 内側の影 */
+    4px 4px 10px rgba(0, 0, 0, 0.6); /* 外側の影 */
+}
 
  .head-btn {
   width: 200px;
@@ -53,15 +61,7 @@
  .card {
   height: 100%;
   border-radius: 20px !important;
-  background: linear-gradient(to bottom, #f3f1ee, #cdcccb) !important;
- }
-
- .card-3n {
-  background: linear-gradient(to bottom, #fff1dac1, #faf5ec) !important;
- }
-
- .card-2n {
-  background: linear-gradient(to bottom, #2e4345, #4a6c6b) !important;
+  border: none;
  }
 
  
