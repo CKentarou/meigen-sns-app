@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get 'homes/about'
 
   get 'posts/search' => 'posts#search'
-  resources :posts
+  resources :posts do
+    resource :favorites, only: [:create, :destroy]
+  end
 
   resources :users, only: [:show, :edit, :update]
 
