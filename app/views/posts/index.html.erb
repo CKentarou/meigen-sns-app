@@ -29,8 +29,8 @@
         <div class="col-2">
           <%= link_to "POST A QUOTE", new_post_path, class: "btn btn-secondary m-3 py-4 rounded-pill head-btn" %>
           <%= link_to "POST A QUOTE", new_post_path, class: "btn btn-secondary m-3 py-4 rounded-pill head-btn" %>
-          <%= link_to "POST A QUOTE", new_post_path, class: "btn btn-secondary m-3 py-4 rounded-pill head-btn" %>
-          <%= link_to "REROAD", posts_path, class: "btn btn-secondary m-3 py-4 rounded-pill head-btn" %>
+          <%= link_to "REROAD Likes", posts_path(sort_by: "favorites"), class: "btn btn-secondary m-3 py-4 rounded-pill head-btn" %>
+          <%= link_to "REROAD Random", posts_path(sort_by: "random"), class: "btn btn-secondary m-3 py-4 rounded-pill head-btn" %>
         </div>
         <div class="col-10 d-flex flex-wrap px-5">
           <% @posts.each do |post| %>
@@ -54,6 +54,7 @@
                     <div class="col-12">
                       <p class="text-center text-muted small"><%= post.author %></p>
                       <p class="text-center text-muted small"><%= post.created_at.strftime("%Y-%m-%d") %></p>
+                      <p> <%= post.favorites.count %> Likes</p>
                     </div>
                   </div>
                 </div>

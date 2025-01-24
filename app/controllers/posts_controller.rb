@@ -5,7 +5,17 @@ class PostsController < ApplicationController
 
   def index
     @user = current_user
-    @posts = Post.all.order("RANDOM()").limit(8)
+    sort_by = params[:sort_by] || "random"
+
+    @posts = 
+      if sort_by == "favorites"
+        Post.left_joins(:favorites)
+            .group(:id)
+            .order("COUNT(favorites.id) DESC")
+            .limit(8)
+      else
+        Post.all.order("RANDOM()").limit(8)
+      end
   end
 
   def show
