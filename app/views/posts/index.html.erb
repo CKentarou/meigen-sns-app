@@ -29,12 +29,13 @@
         <div class="col-2">
           <%= link_to "POST A QUOTE", new_post_path, class: "btn btn-secondary m-3 py-4 rounded-pill head-btn" %>
           <%= link_to "POST A QUOTE", new_post_path, class: "btn btn-secondary m-3 py-4 rounded-pill head-btn" %>
-          <%= link_to "REROAD Likes", posts_path(sort_by: "favorites"), class: "btn btn-secondary m-3 py-4 rounded-pill head-btn" %>
-          <%= link_to "REROAD Random", posts_path(sort_by: "random"), class: "btn btn-secondary m-3 py-4 rounded-pill head-btn" %>
+          <%= link_to "RELOAD Random", posts_path(sort_by: "random"), class: "btn btn-secondary m-3 py-4 rounded-pill head-btn" %>
+          <%= link_to "RELOAD Likes", posts_path(sort_by: "favorites"), class: "btn btn-secondary m-3 py-4 rounded-pill head-btn" %>
+
         </div>
         <div class="col-10 d-flex flex-wrap px-5">
           <% @posts.each do |post| %>
-            <div class="post-card mb-3 text-decoration-none">
+            <div class="post-card mb-5 text-decoration-none">
               <%= link_to post_path(post), class: "card" do %>
                 <div class="container-fluid p-3">
                   <div class="row">

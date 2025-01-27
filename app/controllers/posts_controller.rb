@@ -5,17 +5,31 @@ class PostsController < ApplicationController
 
   def index
     @user = current_user
-    sort_by = params[:sort_by] || "random"
-
-    @posts = 
-      if sort_by == "favorites"
-        Post.left_joins(:favorites)
-            .group(:id)
-            .order("COUNT(favorites.id) DESC")
-            .limit(8)
+    sort_by = params[:sort_by] || session[:sort_by] || "random"
+    session[:sort_by] = sort_by
+    
+    # セッションから投稿IDを取得
+    post_ids = session[:posts]
+    if sort_by == "favorites"
+      # 「RELOAD Likes」ボタンが押された場合、favorites順に並び替え
+      @posts = Post.left_joins(:favorites)
+                   .group(:id)
+                   .order("COUNT(favorites.id) DESC")
+                   .limit(8)
+    elsif sort_by == "random"
+      # 「RELOAD Random」ボタンが押された場合、ランダムに並び替え
+      @posts = Post.all.order("RANDOM()").limit(8)
+    else
+      # 通常のアクセス時、セッションからIDを使って投稿を取得
+      if post_ids.present?
+        @posts = Post.where(id: post_ids).limit(8)
       else
-        Post.all.order("RANDOM()").limit(8)
+        @posts = Post.all.order("RANDOM()").limit(8)
       end
+    end
+  
+    # 新たにIDをセッションに保存（ランダム表示か、favorites順表示かを問わず）
+    session[:posts] = @posts.map(&:id)
   end
 
   def show
