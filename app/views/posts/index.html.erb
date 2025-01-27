@@ -35,42 +35,43 @@
         <div class="col-10 d-flex flex-wrap px-5">
           <% @posts.each do |post| %>
             <div class="post-card mb-5 text-decoration-none">
-              <%= link_to post_path(post), class: "card" do %>
-                <div class="container-fluid p-3">
-                  <div class="row">
-                    <div class="col-2">
-                      <%= image_tag post.user.get_profile_image(50, 50), class: "rounded-circle card-icon" %>
+              <div class="card">
+                <%= link_to post_path(post), class: "card-link" do %>
+                  <div class="container-fluid p-3">
+                    <div class="row">
+                      <div class="col-2">
+                        <%= image_tag post.user.get_profile_image(50, 50), class: "rounded-circle card-icon" %>
+                      </div>
+                      <div class="col-10">
+                        <%= post.user.name %>
+                      </div>
                     </div>
-                    <div class="col-10">
-                      <%= post.user.name %>
+                    <div class="row">
+                      <div class="col-12">
+                        <p class="text-center"><%= post.content %></p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12">
+                        <p class="text-center text-muted small"><%= post.author %></p>
+                        <p class="text-center text-muted small"><%= post.created_at.strftime("%Y-%m-%d") %></p>
+                      </div>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-12">
-                      <p class="text-center"><%= post.content %></p>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-12">
-                      <p class="text-center text-muted small"><%= post.author %></p>
-                      <p class="text-center text-muted small"><%= post.created_at.strftime("%Y-%m-%d") %></p>
-                      <p> <%= post.favorites.count %> Likes</p>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-
-              <!-- いいねボタン -->
-              <div class="like-button text-center">
-                <% if post.favorited_by?(current_user) %>
-                  <%= link_to post_favorites_path(post), method: :delete, class: "like-btn" do %>
-                    ♥ <%= post.favorites.count %> いいね
-                  <% end %>
-                <% else %>
-                  <%= link_to post_favorites_path(post), method: :post, class: "like-btn" do %>
-                    ♡ <%= post.favorites.count %> いいね
-                  <% end %>
                 <% end %>
+                
+                <!-- いいねボタン -->
+                <div class="like-button text-center" >
+                  <% if post.favorited_by?(current_user) %>
+                    <%= link_to post_favorites_path(post), method: :delete, class: "like-btn" do %>
+                      ♥ <%= post.favorites.count %> いいね
+                    <% end %>
+                  <% else %>
+                    <%= link_to post_favorites_path(post), method: :post, class: "like-btn" do %>
+                      ♡ <%= post.favorites.count %> いいね
+                    <% end %>
+                  <% end %>
+                </div>
               </div>
             </div>
           <% end %>
