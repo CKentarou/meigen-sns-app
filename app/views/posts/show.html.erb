@@ -1,28 +1,42 @@
-<h1></h1>
-<div class="container">
+<div class="container mt-5">
   <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="mb-3">
-        <p><%= @post.content %></p>
-      </div>
-      <div class="mb-3">
-        <p><%= @post.author %></p>
-      </div>
-      <% if @post.favorited_by?(current_user) %>
-        <%= link_to post_favorites_path(@post), method: :delete do%>
-          ❤️<%= @post.favorites.count %>いいね
-        <% end %>
-      <% else %>
-        <%= link_to post_favorites_path(@post), method: :post do%>
-          ❤️<%= @post.favorites.count %>いいね
-        <% end %>
-      <% end %>
-      <div class="mb-3 text-center">
-        <%= link_to 'Back', posts_path(sort_by: "session"), class: 'btn btn-outline-secondary' %>
-        <% if current_user.id == @post.user_id %>
-          <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-outline-primary' %>
-          <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %>
-        <% end %>
+    <div class="col-md-8">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h3 class="card-title text-center mb-3">📢 投稿詳細</h3>
+
+          <!-- 投稿内容 -->
+          <div class="mb-3">
+            <p class="fs-5"><%= @post.content %></p>
+          </div>
+
+          <!-- 投稿者 -->
+          <div class="mb-3 text-muted">
+            <p><strong>投稿者：</strong> <%= @post.author %></p>
+          </div>
+
+          <!-- いいねボタン -->
+          <div class="mb-3 text-center">
+            <% if @post.favorited_by?(current_user) %>
+              <%= link_to post_favorites_path(@post), method: :delete, class: "btn btn-danger" do %>
+                <i class="fa-solid fa-heart"></i> <%= @post.favorites.count %> いいね
+              <% end %>
+            <% else %>
+              <%= link_to post_favorites_path(@post), method: :post, class: "btn btn-outline-danger" do %>
+                <i class="fa-regular fa-heart"></i> <%= @post.favorites.count %> いいね
+              <% end %>
+            <% end %>
+          </div>
+
+          <!-- ボタン操作 -->
+          <div class="mb-3 text-center">
+            <%= link_to '🔙 戻る', posts_path(sort_by: "session"), class: 'btn btn-outline-secondary' %>
+            <% if current_user.id == @post.user_id %>
+              <%= link_to '✏️ 編集', edit_post_path(@post), class: 'btn btn-outline-primary' %>
+              <%= link_to '🗑️ 削除', post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-outline-danger' %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
